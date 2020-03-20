@@ -244,10 +244,10 @@ NSString * const ID = @"SDCycleScrollViewCell";
 - (void)setSpacingBetweenDots:(NSInteger)spacingBetweenDots {
     _spacingBetweenDots = spacingBetweenDots;
     [self setupPageControl];
-       if ([self.pageControl isKindOfClass:[TAPageControl class]]) {
-           TAPageControl *pageContol = (TAPageControl *)_pageControl;
-           pageContol.spacingBetweenDots = spacingBetweenDots;
-       }
+    if ([self.pageControl isKindOfClass:[TAPageControl class]]) {
+        TAPageControl *pageContol = (TAPageControl *)_pageControl;
+        pageContol.spacingBetweenDots = spacingBetweenDots;
+    }
 }
 
 - (void)setCustomPageControlDotImage:(UIImage *)image isCurrentPageDot:(BOOL)isCurrentPageDot
