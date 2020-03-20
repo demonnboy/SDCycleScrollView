@@ -76,6 +76,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
 {
     _pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     _autoScrollTimeInterval = 2.0;
+    _spacingBetweenDots = 8.0;
     _titleLabelTextColor = [UIColor whiteColor];
     _titleLabelTextFont= [UIFont systemFontOfSize:14];
     _titleLabelBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
@@ -242,10 +243,11 @@ NSString * const ID = @"SDCycleScrollViewCell";
 
 - (void)setSpacingBetweenDots:(NSInteger)spacingBetweenDots {
     _spacingBetweenDots = spacingBetweenDots;
-    if ([self.pageControl isKindOfClass:[TAPageControl class]]) {
-        TAPageControl *pageContol = (TAPageControl *)_pageControl;
-        pageContol.spacingBetweenDots = spacingBetweenDots;
-    }
+    [self setupPageControl];
+       if ([self.pageControl isKindOfClass:[TAPageControl class]]) {
+           TAPageControl *pageContol = (TAPageControl *)_pageControl;
+           pageContol.spacingBetweenDots = spacingBetweenDots;
+       }
 }
 
 - (void)setCustomPageControlDotImage:(UIImage *)image isCurrentPageDot:(BOOL)isCurrentPageDot
@@ -403,6 +405,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
             TAPageControl *pageControl = [[TAPageControl alloc] init];
             pageControl.numberOfPages = self.imagePathsGroup.count;
             pageControl.dotColor = self.currentPageDotColor;
+            pageControl.spacingBetweenDots = self.spacingBetweenDots;
             pageControl.userInteractionEnabled = NO;
             pageControl.currentPage = indexOnPageControl;
             [self addSubview:pageControl];
